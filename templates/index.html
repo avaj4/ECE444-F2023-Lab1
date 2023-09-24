@@ -34,7 +34,22 @@
     {% block page_content %}
     <div class="page-header">
         <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
-        
+        {% if email %}
+            {% if email_utoronto %}
+                <h1>Your University of Toronto email is {{ email }}</h1>
+            {% else %}
+                {% if form.email.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.email.label }} {{ form.email(size=32, class="form-control") }}
+                        {% for error in form.email.errors %}
+                            <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <h1>Please enter a University of Toronto email</h1>
+                {% endif %}
+            {% endif %}
+        {% endif %}
     </div>
     <!-- Include the form here -->
     <form method="POST" action="/">
@@ -42,6 +57,10 @@
         <div class="form-group">
             <label for="name">{{ form.name.label }}</label>
             {{ form.name(size=32, class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="email">{{ form.email.label }}</label>
+            {{ form.email(size=32, class="form-control") }}
         </div>
         <div class="form-group">
             <input type="submit" value="Submit" class="btn btn-primary">
