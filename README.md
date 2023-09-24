@@ -5,4 +5,5 @@ Activity 1
 Activity 2
 ![image](https://github.com/avaj4/ECE444-F2023-Lab1/assets/53788244/7497f6a0-f85f-4507-b5b9-6d0a0a73de2b)
 Activity 3
-![image](https://github.com/avaj4/ECE444-F2023-Lab1/assets/53788244/b911a3d4-65e4-4ec5-acd0-accf2ffa6f9e)
+![image](https://github.com/avaj4/ECE444-F2023-Lab1/assets/53788244/5952d47d-482c-423d-a73c-f1d3bd573839)
+
