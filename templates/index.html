@@ -1,10 +1,5 @@
 {% extends "bootstrap/base.html" %}
 
-{% block scripts %}
-{{ super() }}
-{{ moment.include_moment() }}
-{% endblock %}
-
 {% block title %}Flasky{% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
@@ -30,13 +25,28 @@
 
 {% block content %}
 <div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% block page_content %}
     <div class="page-header">
-        <h1>Hello Ava!</h1>
+        <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+        
     </div>
-    <div class="page-content">
-        <p>The local date and time is {{moment(current_time).format('LLL')}}.</p>
-        <p>That was {{moment(current_time).fromNow(refresh=True)}}</p>
-    </div>
+    <!-- Include the form here -->
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="name">{{ form.name.label }}</label>
+            {{ form.name(size=32, class="form-control") }}
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+    </form>
+    {% endblock %}
 </div>
 {% endblock %}
-
